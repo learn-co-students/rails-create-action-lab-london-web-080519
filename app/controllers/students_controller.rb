@@ -12,6 +12,14 @@ class StudentsController < ApplicationController
   end
 
   def create
+    @student = Student.create(students_params)
+    redirect_to student_path(@student)
+  end
+
+  private
+
+  def students_params
+    params.permit(:first_name, :last_name)
   end
 
 end
